@@ -8,10 +8,15 @@
   - [Classes](#classes)
     - [Fields](#fields)
   - [Sequence Types](#sequence-types)
+    - [Linq](#linq)
   - [Namespaces](#namespaces)
   - [Errors](#errors)
+    - [The non-static property or method 'Something' cannot be accessed](#the-non-static-property-or-method-something-cannot-be-accessed)
 - [Unity-Specific C](#unity-specific-c)
   - [Coroutines](#coroutines)
+  - [UI](#ui)
+    - [Positioning Via Script](#positioning-via-script)
+    - [UI Blocking Game Objects](#ui-blocking-game-objects)
   - [Everything Sprites](#everything-sprites)
       - [Zooming Camera to Sprite Size](#zooming-camera-to-sprite-size)
   - [Errors](#errors-1)
@@ -75,12 +80,23 @@ public class MyClass : ParentClass
 
 ## Sequence Types
 
-| Feature | Array | List |
-|---------|-------|------|
-| Use case | Fixed-length list | Dynamic list |
-| Get size | myArr.Length | myList.Count |
-| Get element | myArr[i] | myList[i] |
-| Add element | Not supported - arrays are fixed-length | myList.Add(item) |
+| Feature | Array | List | String |
+|---------|-------|------|--------|
+| Use case | Fixed-length list | Dynamic list | Ordered sequence of characters |
+| Get size | `myArr.Length` | `myList.Count` | `myStr.Length` |
+| Get element | `myArr[i]` | `myList[i]` | `myStr[i]` |
+| Add element | Not supported - arrays are fixed-length | `myList.Add(item)` | `myString + " new characters"` |
+
+### Linq
+
+`System.Linq` provides sequence iteration methods.
+
+| Feature | Linq Method | Example |
+|---------|-------------|---------|
+| Search & locate item | `Where` | myArr.Where(item => conditional) |
+| Return new instance of each item | `Select` | myArr.Select(item => item.key) |
+
+----
 
 ## Namespaces
 
@@ -88,7 +104,23 @@ Add `using Module;` to top of files to use different namespaces that will contai
 
 ## Errors
 
+### The non-static property or method 'Something' cannot be accessed
 
+This means you're using a class to access a property or method but it is not static so it can only be accessed on instances.
+
+```c#
+class MyClass {
+  private float foo = 1f;
+  static float bar = 2f;
+
+  // ...
+}
+
+MyClass instance = new MyClass()
+MyClass.foo // error
+instance.foo // allowed
+MyClass.bar // allowed
+```
 
 # Unity-Specific C#
 
@@ -130,6 +162,26 @@ public RunGameStartCoroutine()
   // Store the new running coroutine
   _runningCoroutine = StartCoroutine(GameStart());
 }
+```
+
+## UI
+
+### Positioning Via Script
+
+`RectTransform`s are used on UI elements, so `transform.position` will not match what's expected. Instead, use `GetComponent<RectTransform>().anchoredPosition`.
+
+### UI Blocking Game Objects
+
+We don't want to handle mouse overs on game objects that are underneath UI elements, because the user is probably just interacting with the UI.
+
+Potentially better solutions but this is what I have in-use now:
+
+```c#
+if (Input.GetMouseButtonDown(0)) {
+  if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+      return;
+  Bingo();
+  }
 ```
 
 ## Everything Sprites
