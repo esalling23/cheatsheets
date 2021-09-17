@@ -13,6 +13,8 @@
   - [Errors](#errors)
     - [The non-static property or method 'Something' cannot be accessed](#the-non-static-property-or-method-something-cannot-be-accessed)
 - [Unity-Specific C](#unity-specific-c)
+  - [Resources](#resources)
+  - [Instantiating GameObjects](#instantiating-gameobjects)
   - [Coroutines](#coroutines)
   - [UI](#ui)
     - [Positioning Via Script](#positioning-via-script)
@@ -91,10 +93,10 @@ public class MyClass : ParentClass
 
 `System.Linq` provides sequence iteration methods.
 
-| Feature | Linq Method | Example |
-|---------|-------------|---------|
-| Search & locate item | `Where` | myArr.Where(item => conditional) |
-| Return new instance of each item | `Select` | myArr.Select(item => item.key) |
+| Feature | Linq Method | Example | JS Method |
+|---------|-------------|---------|-----------|
+| Filters | `Where` | myArr.Where(item => conditional) | `.filter` |
+| Return new instance of each item (like a single key) | `Select` | myArr.Select(item => item.key) | `.map` |
 
 ----
 
@@ -123,6 +125,47 @@ MyClass.bar // allowed
 ```
 
 # Unity-Specific C#
+
+## Resources
+
+You can load prefabs etc. (instead of assigning them in the inspector) through [Unity Resources](https://docs.unity3d.com/ScriptReference/Resources.html). You'll need a `Resources` directory with all your loadable resources in it.
+
+Then in the code:
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class ExampleClass : MonoBehaviour
+{
+    void Start()
+    {
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        Renderer rend = go.GetComponent<Renderer>();
+        rend.material.mainTexture = Resources.Load("glass") as Texture;
+    }
+}
+```
+
+> Note: The Resources folder in Assets needs to be created before it is used. It is not created when a new Project is created.
+
+## Instantiating GameObjects
+
+To [instantiate](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html) game objects is to create them & add them to the scene.
+
+You can instantiate any game object, such as one you're storing in a `SerializeField` or one you found with a scene-search. You can also use `Resources.Load` and then instantiate that loaded resource.
+
+```c#
+// Use the current object's transform as the location to have the
+// instantiated object be a child of this object
+Vector3 location = gameObject.transform.position;
+// The rotation https://docs.unity3d.com/ScriptReference/Quaternion.html
+Quaternion rotation = Quaternion.identity;
+// The resource to instantiate
+GameObject cats = Resources.Load("Prefabs/Cats") as GameObject;
+// Instantiate the object, at the location, using the rotation provided
+Instantiate(cats, location, rotation);
+```
 
 ## Coroutines
 
