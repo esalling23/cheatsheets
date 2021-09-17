@@ -1,0 +1,22 @@
+{
+  "name": "cheatsheets",
+  "version": "1.0.0",
+  "description": "Practice, quick-resources",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esalling23/cheatsheets.git"
+  },
+  "author": "Eron Salling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esalling23/cheatsheets/issues"
+  },
+  "homepage": "https://github.com/esalling23/cheatsheets#readme",
+  "devDependencies": {
+    "jest": "^27.1.0"
+  }
+}
