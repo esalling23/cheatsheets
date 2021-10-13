@@ -1,4 +1,4 @@
-// LIFO or FILO - last in first our or first in last out
+// LIFO or FILO - last in first out or first in last out
 // pile of data
 // can only access top-most item
 const { LinkedList } = require('./linked-list')

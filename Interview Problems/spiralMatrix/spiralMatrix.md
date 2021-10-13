@@ -62,4 +62,4 @@ matrix(4)
 - [Solution Example](https://github.com/StephenGrider/AlgoCasts/blob/master/completed_exercises/matrix/index.js)
 - [Video Walkthrough (Udemy Interview Bootcamp Course)](https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/learn/lecture/8547002#overview)
 
-![Spiral traveral diagram](https://leetcode.com/problems/spiral-matrix-ii/Figures/59/spiral_detailed.png)
+![Spiral traversal diagram](https://leetcode.com/problems/spiral-matrix-ii/Figures/59/spiral_detailed.png)
