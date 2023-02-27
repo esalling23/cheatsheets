@@ -62,5 +62,5 @@ const fibomemo = (n, memo=[]) => {
 // Return the number of options available to travel
 // up the steps
 // Basically fibonacci sequence
-const fiboSteps = (n, )
+// TO DO 
 

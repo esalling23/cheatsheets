@@ -22,6 +22,27 @@
     - [C#](Unity/c%23.md)
     - [Editor](Unity/editor.md)
     - [Links](Unity/links.md)
+- Computer Science
+    - [Big O](CompSci/bigO.md)
+    - [Binary Search](CompSci/binarySearch.js)
+    - [Fibonacci](CompSci/fibonacci.js)
+    - Data Structures
+        - [Linked List](CompSci/DataStructures/linked-list.js)
+        - [Queue](CompSci/DataStructures/queue.js)
+        - [Stack](CompSci/DataStructures/stack.js)
+        - Trees
+            - [Code](CompSci/DataStructures/trees/trees.js)
+            - [Walkthrough](CompSci/DataStructures/trees/trees.md)    
+
+# Practice
+
+Mostly interview stuff.
+
+- [Starter Problems](InterviewProblems/basic-whiteboard.md)
+- [Array Manipulation](InterviewProblems/ArrayManipulation/arrayManipulation.md)
+- [Cheapest Connections](InterviewProblems/CheapestConnections/cheapestConnections.md)
+- [First Non-Repeating](InterviewProblems/FirstNonRepeating/firstNonRepeating.md)
+- [Spiral Matrix](InterviewProblems/SpiralMatrix/spiralMatrix.md)
 
 # Don't Re-Write That
 

@@ -1,6 +1,6 @@
 # Name Of Problem
 
-- [Link to Leetcode Problem](https://leetcode.com/problems/spiral-matrix-ii/)
+- [Link to Original Problem](https://leetcode.com/problems/spiral-matrix-ii/)
 
 ## The Problem
 
