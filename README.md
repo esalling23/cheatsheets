@@ -38,7 +38,8 @@
 
 Mostly interview stuff.
 
-- [Starter Problems](InterviewProblems/basic-whiteboard.md)
+- [JS Practice lvl 0](Javascript/Practice/day1JS.md)
+- [Starter Interview Problems](InterviewProblems/basic-whiteboard.md)
 - [Array Manipulation](InterviewProblems/ArrayManipulation/arrayManipulation.md)
 - [Cheapest Connections](InterviewProblems/CheapestConnections/cheapestConnections.md)
 - [First Non-Repeating](InterviewProblems/FirstNonRepeating/firstNonRepeating.md)
