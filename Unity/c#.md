@@ -1,35 +1,59 @@
-# C# Unity Cheatsheet <!-- omit in toc -->
+<!-- TOC ignore:true -->
+# C# & Unity 
+
+This cheatsheet contains some "vanilla" C# as well as sections on Unity-specific code in C#.
 
 **Contents**
 
-- [Basic C](#basic-c)
+<!-- TOC -->
+
+- [C# & Unity](#c--unity)
+- [Basic C#](#basic-c)
+  - [Printing](#printing)
+    - [String Interpolation](#string-interpolation)
+      - [Time formatting](#time-formatting)
   - [Modifiers](#modifiers)
   - [Variables](#variables)
   - [Classes](#classes)
     - [Fields](#fields)
   - [Sequence Types](#sequence-types)
+    - [Looping](#looping)
     - [Linq](#linq)
+  - [Dictionaries](#dictionaries)
+  - [Enums](#enums)
+    - [Get String Version](#get-string-version)
+    - [Get Random Value](#get-random-value)
   - [Namespaces](#namespaces)
+    - [When?](#when)
   - [Errors](#errors)
     - [The non-static property or method 'Something' cannot be accessed](#the-non-static-property-or-method-something-cannot-be-accessed)
-- [Unity-Specific C](#unity-specific-c)
+- [Unity-Specific C#](#unity-specific-c)
+  - [Singleton](#singleton)
   - [Resources](#resources)
+  - [Random Numbers](#random-numbers)
+    - [Random Enum](#random-enum)
   - [Instantiating GameObjects](#instantiating-gameobjects)
+  - [D Physics](#d-physics)
+    - [Rigidbodies](#rigidbodies)
   - [Coroutines](#coroutines)
-  - [2D Physics](#2d-physics)
+  - [Colliders](#colliders)
+  - [Handling Keyboard Input](#handling-keyboard-input)
+    - [GetAxisRaw](#getaxisraw)
   - [UI](#ui)
     - [Positioning Via Script](#positioning-via-script)
     - [Positioning In World Space](#positioning-in-world-space)
       - [Move UI Element to Game Object Position](#move-ui-element-to-game-object-position)
     - [UI Blocking Game Objects](#ui-blocking-game-objects)
   - [Everything Sprites](#everything-sprites)
-      - [Zooming Camera to Sprite Size](#zooming-camera-to-sprite-size)
+    - [Sizing/Positioning Box Collider](#sizingpositioning-box-collider)
+    - [Zooming Camera to Sprite Size](#zooming-camera-to-sprite-size)
   - [Input](#input)
     - [Mouse Input](#mouse-input)
       - [Getting Mouse Position](#getting-mouse-position)
-  - [Errors](#errors-1)
+  - [Errors](#errors)
+      - ["Cannot implicitly convert type 'TYPE' to 'System.Action'"](#cannot-implicitly-convert-type-type-to-systemaction)
 
-This cheatsheet contains some "vanilla" C# as well as sections on Unity-specific code in C#.
+<!-- /TOC -->
 
 ----
 
@@ -198,6 +222,13 @@ Bar randomBar = (Bar)values.GetValue(random.Next(values.Length));
 ## Namespaces
 
 Add `using Module;` to top of files to use different namespaces that will contain available classes etc. Examples include `using System;` or `using UnityEngine;`
+
+### When?
+
+Namespaces are useful for organization/grouping as well as preventing conflicts across groups of classes. 
+When you define a class without a namespace in Unity, it will be added to the root namespace, as [defined in your project settings](https://gamedev.stackexchange.com/questions/187802/how-can-i-change-the-root-namespace-for-scripts-in-unity). 
+
+[Stackoverflow Discussion](https://answers.unity.com/questions/802417/when-to-use-a-namespace.html)
 
 ## Errors
 
