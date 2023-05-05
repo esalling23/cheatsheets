@@ -183,6 +183,15 @@ foreach (char c in myString)
 
 Mappings of keys and values. 
 
+```c#
+var cities = new Dictionary<string, string>(){
+  // { string key, string value }
+	{"UK", "London, Manchester, Birmingham"},
+	{"USA", "Chicago, New York, Washington"},
+	{"India", "Mumbai, New Delhi, Pune"}
+};
+```
+
 | Feature | Example |
 |---------|---------|
 | Check if dict contains key | `my_dict.ContainsKey("key")` |
