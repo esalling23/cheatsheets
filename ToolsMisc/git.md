@@ -1,11 +1,42 @@
 # Github
 
+<!-- TOC -->
+
+- [Github](#github)
+  - [Useful Flags](#useful-flags)
+  - [Submodules](#submodules)
+  - [Working with Multiple Accounts SSH](#working-with-multiple-accounts-ssh)
+  - [LFS Large File Storage](#lfs-large-file-storage)
+
+<!-- /TOC -->
+
 ## Useful Flags
 
 | Base Command | Flag | Use |
 |--------------|------|-----|
 | `git clone` | `--recurse-submodules` | Will also initialize & clone any included submodules |
 | `git remote` | `-v` | Displays verbose information about remotes, such as full URLs |
+
+## Submodules
+
+[Helpful Guide](https://www.vogella.com/tutorials/GitSubmodules/article.html#cloning-a-repository-that-contains-submodules)
+
+> If you want to clone a repository including its submodules you can use the `--recursive` parameter.
+>
+> ```
+> git clone --recursive [URL to Git repo]
+> ```
+>
+> If you already have cloned a repository and now want to load it’s submodules you have to use submodule update.
+>
+> ```
+> git submodule update --init
+> ```
+> 
+> if there are nested submodules:
+> ```
+> git submodule update --init --recursive
+> ```
 
 ## Working with Multiple Accounts (SSH)
 
@@ -36,5 +67,14 @@ Host bitbucket.org
 
 Then clone/etc using `git@host-name` for ex `git@github-amplify` or `git@bitbucket.org`
 
+## LFS (Large File Storage)
 
+[Quick Guide](https://sabicalija.github.io/git-lfs-intro/)
 
+Basic commands
+```
+# Clone 
+
+# Pull after clone
+git lfs pull
+```
