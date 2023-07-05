@@ -45,3 +45,19 @@ The following steps focus on setting up a backend using Node, MongoDB, and Expre
 7. npm install and link framework & app (if npm keeps getting killed try https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04)
 8. make sure app is working (`node server.js`)
 9.  Install Pm2: `NODE_ENV=production pm2 start server.js -- portfolio-website --env production` http://pm2.keymetrics.io/docs/usage/deployment/
+
+## Copy files 
+
+So you made a file on your server cluster that now you want on your local machine? 
+
+Run on the server: 
+```sh
+scp eron@143.198.132.99:~/eron-salling-portfolio/projects.csv ~/Developer/eron-salling-portfolio/projects.csv
+```
+
+Other way around? got a file on local machine you need on server? 
+
+Run on local:
+```sh
+scp ~/Developer/eron-salling-portfolio/projects.csv eron@143.198.132.99:~/eron-salling-portfolio/projects.csv
+```
