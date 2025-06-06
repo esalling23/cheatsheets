@@ -202,6 +202,31 @@ function maxChar(str) {
 }
 ```
 
+Even better: 
+
+```js
+function maxChar(str) {
+
+  const chars = {};
+  let count = 0;
+  let max = '';
+
+  for (let char of str) {
+    // If chars[char] doesn't exist set it to 1
+    // otherwise add 1 to the count
+    if (!chars.hasOwnProperty(char)) chars[char] = 1;
+		else chars[char] += 1
+
+    if (chars[char] > count) {
+      count = chars[char];
+      max = char;
+    }
+  }
+
+  return max
+}
+```
+
 </details>
 
 ----
@@ -521,3 +546,22 @@ function vowels(str) {
 ```
 
 </details>
+
+## Common Elements in Sorted Arrays
+
+```
+Input :
+a = [1, 5, 10, 20, 40, 80]
+b = [6, 7, 20, 80, 100]
+Output: 20, 80
+
+
+Input :
+a = [1, 5, 5]
+b = [3, 4, 5, 5, 10]
+Output: 5, 5
+```
+
+PsuedoCode
+1. Initialize empty array to store resulting common elements
+2. 

@@ -20,6 +20,7 @@
     - [Loop Over Enum](#loop-over-enum)
   - [Namespaces](#namespaces)
     - [When?](#when)
+  - [Threads](#threads)
   - [Errors](#errors)
     - [The non-static property or method 'Something' cannot be accessed](#the-non-static-property-or-method-something-cannot-be-accessed)
 
@@ -128,6 +129,14 @@ public class MyClass : ParentClass
 | Get size | `myArr.Length` | `myList.Count` | `myStr.Length` |
 | Get element | `myArr[i]` | `myList[i]` | `myStr[i]` |
 | Add element | Not supported - arrays are fixed-length | `myList.Add(item)` | `myString + " new characters"` |
+
+| Method | Signature | Description | Example |
+| ------ | --------- | ----------- | ------- |
+| Array.Length Property      | `int Array.Length { get; }`            | Returns the number of elements in the array.                              | `int[] numbers = { 1, 2, 3, 4, 5 }; int length = numbers.Length;` |
+| List.Count Property        | `int List<T>.Count { get; }`           | Returns the number of elements in the list.                               | `List<string> names = new List<string> { "Alice", "Bob", "Charlie" }; int count = names.Count;` |
+| List.Add Method            | `void List<T>.Add(T item)`             | Adds an item to the end of the list.                                       | `List<int> numbers = a new List<int> { 1, 2, 3 }; numbers.Add(4);` |
+| List.Remove Method         | `bool List<T>.Remove(T item)`          | Removes the first occurrence of a specific item from the list and returns `true` if successful, or `false` if the item is not found. | `List<string> fruits = new List<string> { "apple", "banana", "cherry" }; bool removed = fruits.Remove("banana");` |
+
 
 ### Looping
 
@@ -287,6 +296,10 @@ Namespaces are useful for organization/grouping as well as preventing conflicts 
 When you define a class without a namespace in Unity, it will be added to the root namespace, as [defined in your project settings](https://gamedev.stackexchange.com/questions/187802/how-can-i-change-the-root-namespace-for-scripts-in-unity). 
 
 [Stackoverflow Discussion](https://answers.unity.com/questions/802417/when-to-use-a-namespace.html)
+
+## Threads
+
+
 
 ## Errors
 

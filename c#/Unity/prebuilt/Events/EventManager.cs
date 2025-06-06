@@ -29,7 +29,6 @@ public class EventManager : MonoBehaviour
                 {
                     eventManager.Init();
 
-                    //  Sets this to not be destroyed when reloading scene
                     DontDestroyOnLoad(eventManager);
                 }
             }

@@ -12,9 +12,56 @@ Mostly focused on DNS setup & Ubuntu commands.
 3. Set up LetsEncrypt
 4. Install your stack-specific stuff (node, whatever)
 
-### Ubuntu Server
-- Nginx for security
-- LetsEncrypt for more security, specifically encryption
+### Ubuntu Server Setup
+
+#### Nginx
+
+```
+
+# Redirect all HTTP traffic to HTTPS, and handle www to non-www redirect
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;
+
+    # Redirect to HTTPS with non-www
+    return 301 https://example.com$request_uri;
+}
+
+# HTTPS server block with www to non-www redirect
+server {
+    listen 443 ssl;
+    server_name example.com www.example.com;
+
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    client_max_body_size 100M;
+
+    # Redirect www to non-www
+    if ($host = www.example.com) {
+        return 301 https://example.com$request_uri;
+    }
+
+    location / {
+        proxy_pass http://<SERVER_IP>:<APP_PORT>;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
+
+#### LetsEncrypt
+
+```
+sudo certbot --nginx -d example.com -d www.example.com
+```
 
 ## Debugging
 
@@ -26,9 +73,18 @@ Something's not quite right.
    1. [Confirm changes have been propagated](https://www.whatsmydns.net/)
    2. [Other common issues](https://www.digitalocean.com/community/tutorials/how-to-fix-common-letsencrypt-errors)
 
+## HTTPS
+
+Keep in mind that port 3000 is an https port ([???](https://community.letsencrypt.org/t/site-cant-provide-a-secure-connection/191917/2))
+So it will not work or SSL connections
+
 ## Stack-Specifics
 
 Setup for specific stacks. 
+
+### Django & React
+
+
 
 ### ME*N (MongoDB, Express, * Any frontend, Node)
 

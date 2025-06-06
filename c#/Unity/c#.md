@@ -7,32 +7,35 @@ This cheatsheet contains notes on Unity-specific code in C#.
 
 <!-- TOC -->
 
-- [C# & Unity](#c--unity)
+- [C# \& Unity](#c--unity)
 - [Unity-Specific C#](#unity-specific-c)
-  - [Singleton](#singleton)
-  - [Resources](#resources)
-  - [Random Numbers](#random-numbers)
-  - [Instantiating GameObjects](#instantiating-gameobjects)
-  - [D Physics](#d-physics)
-    - [Rigidbodies](#rigidbodies)
-  - [Coroutines](#coroutines)
-  - [Colliders](#colliders)
-  - [Handling Keyboard Input](#handling-keyboard-input)
-    - [GetAxisRaw](#getaxisraw)
-  - [UI](#ui)
-    - [Positioning Via Script](#positioning-via-script)
-    - [Positioning In World Space](#positioning-in-world-space)
-      - [Move UI Element to Game Object Position](#move-ui-element-to-game-object-position)
-    - [UI Blocking Game Objects](#ui-blocking-game-objects)
-  - [Everything Sprites](#everything-sprites)
-    - [Sizing/Positioning Box Collider](#sizingpositioning-box-collider)
-    - [Zooming Camera to Sprite Size](#zooming-camera-to-sprite-size)
-  - [Input](#input)
-    - [Mouse Input](#mouse-input)
-      - [Getting Mouse Position](#getting-mouse-position)
-  - [Errors](#errors)
-      - ["Cannot implicitly convert type 'TYPE' to 'System.Action'"](#cannot-implicitly-convert-type-type-to-systemaction)
+	- [Singleton](#singleton)
+	- [Resources](#resources)
+	- [Random Numbers](#random-numbers)
+	- [Instantiating GameObjects](#instantiating-gameobjects)
+		- [Setting Position](#setting-position)
+	- [2D Physics](#2d-physics)
+		- [Rigidbodies](#rigidbodies)
+	- [Coroutines](#coroutines)
+	- [Colliders](#colliders)
+	- [Handling Keyboard Input](#handling-keyboard-input)
+		- [GetAxisRaw](#getaxisraw)
+	- [UI](#ui)
+		- [Positioning Via Script](#positioning-via-script)
+		- [Positioning In World Space](#positioning-in-world-space)
+			- [Move UI Element to Game Object Position](#move-ui-element-to-game-object-position)
+		- [UI Blocking Game Objects](#ui-blocking-game-objects)
+	- [Everything Sprites](#everything-sprites)
+		- [Sizing/Scaling Sprites](#sizingscaling-sprites)
+		- [Sizing/Positioning Box Collider](#sizingpositioning-box-collider)
+		- [Zooming Camera to Sprite Size](#zooming-camera-to-sprite-size)
+	- [Input](#input)
+		- [Mouse Input](#mouse-input)
+			- [Getting Mouse Position](#getting-mouse-position)
+	- [Errors](#errors)
+			- ["Cannot implicitly convert type 'TYPE' to 'System.Action'"](#cannot-implicitly-convert-type-type-to-systemaction)
 
+<!-- /TOC -->
 <!-- /TOC -->
 
 ----
@@ -110,6 +113,18 @@ GameObject cats = Resources.Load("Prefabs/Cats") as GameObject;
 // Instantiate the object, at the location, using the rotation provided
 Instantiate(cats, location, rotation, parent);
 ```
+
+### Setting Position
+
+Sometimes position needs to be set after the object is instantiated
+
+```c#
+var obj = Instantiate(...);
+
+((RectTransform)obj.transform).anchoredPosition = new Vector2.zero;
+```
+
+[Stackoverflow](https://stackoverflow.com/questions/63990288/unity2d-instantiated-object-always-at-wrong-position)
 
 ## 2D Physics
 
@@ -260,6 +275,18 @@ if (Input.GetMouseButtonDown(0)) {
 ```
 
 ## Everything Sprites
+
+### Sizing/Scaling Sprites
+
+The `SpriteRenderer` will provide `bounds` which is its size in world space. 
+If you want a sprite to span from position (0, 0) to (10, 10), essentially a 10x10 box, then you can scale the sprite based on its `bounds`:
+
+```c#
+float ratioX = 10f / _spriteRenderer.bounds.size.x;
+float ratioY = 10f / _spriteRenderer.bounds.size.y;
+_spriteRenderer.transform.localScale = Vector3.Scale(_spriteRenderer.transform.localScale, new Vector3(ratioX, ratioY, 1f));
+
+```
 
 ### Sizing/Positioning Box Collider
 

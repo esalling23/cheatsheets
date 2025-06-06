@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/esalling23/cheatsheets#readme",
   "devDependencies": {
-    "jest": "^27.1.0"
+    "jest": "^27.5.1"
   }
 }

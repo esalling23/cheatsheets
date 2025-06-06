@@ -67,6 +67,8 @@ Host bitbucket.org
 
 Then clone/etc using `git@host-name` for ex `git@github-amplify` or `git@bitbucket.org`
 
+Example: `git clone git@github-amplify:org-name/repo-name.git`
+
 ## LFS (Large File Storage)
 
 [Quick Guide](https://sabicalija.github.io/git-lfs-intro/)
